@@ -62,7 +62,7 @@ function setup() {
   mudkipScore = 0;
   charmanderScore = 0;
   snivyScore = 0;
-  mudkipWin = true;
+  mudkipWin = false;
   charmanderWin = false;
   snivyWin = false;
   endlessMode = false;
