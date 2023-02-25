@@ -363,7 +363,7 @@ class Obstacles {
 // Leaf
 class Leaf extends Obstacles {
   constructor(x, y) {
-    super(x, y, 125, leaf);
+    super(x, y, 100, leaf);
   }
 }
 // Grass
@@ -605,9 +605,9 @@ function drawSnivyPlay() {
   }
   fill(0, 0, 0);
   textAlign(LEFT);
-  textSize(25);
+  textSize(35);
   text("Hit: " + snivyHit, 30, 30);
-  text("Score: " + snivyScore, 30, 70);
+  text("Score: " + snivyScore, 30, 100);
   playSnivy.draw();
 }
 // -Lose_Scene-
