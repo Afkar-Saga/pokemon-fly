@@ -363,7 +363,7 @@ class Obstacles {
 // Leaf
 class Leaf extends Obstacles {
   constructor(x, y) {
-    super(x, y, 75, leaf);
+    super(x, y, 125, leaf);
   }
 }
 // Grass
@@ -375,7 +375,7 @@ class Grass extends Obstacles {
 // Water
 class Water extends Obstacles {
   constructor(x, y) {
-    super(x, y, 100, water);
+    super(x, y, 125, water);
   }
 }
 // Sea
@@ -420,7 +420,7 @@ function drawCharmanderText() {
   fill(255, 0, 0);
   textFont("Comic Sans MS", width / 45);
   text("Charmander Fly", width / 2, height * 0.3);
-  fill(0, 0, 0);
+  fill(255, 255, 255);
   textSize(20);
   text("Charmander can fly, now!", 125, height - 10);
 }
@@ -575,7 +575,7 @@ function drawCharmanderPlay() {
       seaXs[i].x = width;
     }
   }
-  fill(0, 0, 0);
+  fill(255, 255, 255);
   textAlign(LEFT);
   textSize(25);
   text("Hit: " + charmanderHit, 30, 30);
