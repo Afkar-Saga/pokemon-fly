@@ -549,9 +549,9 @@ function drawMudkipPlay() {
   }
   fill(0, 0, 0);
   textAlign(LEFT);
-  textSize(25);
+  textSize(35);
   text("Hit: " + mudkipHit, 30, 30);
-  text("Score: " + mudkipScore, 30, 70);
+  text("Score: " + mudkipScore, 30, 100);
   playMudkip.draw();
 }
 function drawCharmanderPlay() {
@@ -577,9 +577,9 @@ function drawCharmanderPlay() {
   }
   fill(255, 255, 255);
   textAlign(LEFT);
-  textSize(25);
+  textSize(35);
   text("Hit: " + charmanderHit, 30, 30);
-  text("Score: " + charmanderScore, 30, 70);
+  text("Score: " + charmanderScore, 30, 100);
   playCharmander.draw();
 }
 function drawSnivyPlay() {
