@@ -90,7 +90,7 @@ function setup() {
 
   currentScene = 1;
 
-  mainMusic.play();
+  mainMusic.loop();
 }
 
 // Cloud
@@ -753,11 +753,12 @@ function mouseClicked() {
       currentScene = 11;
       mainMusic.stop();
       buttonSound.play();
-      playMusic.play();
+      playMusic.loop();
     } else if (buttonEndlessMode.isMouseInside()) {
       currentScene = 21;
       mainMusic.stop();
       buttonSound.play();
+      playMusic.loop();
     } else if (howtoplay.isMouseInside()) {
       currentScene = 31;
       buttonSound.play();
@@ -772,11 +773,12 @@ function mouseClicked() {
       currentScene = 12;
       mainMusic.stop();
       buttonSound.play();
-      playMusic.play();
+      playMusic.loop();
     } else if (buttonEndlessMode.isMouseInside()) {
       currentScene = 22;
       mainMusic.stop();
       buttonSound.play();
+      playMusic.loop();
     } else if (howtoplay.isMouseInside()) {
       currentScene = 32;
       buttonSound.play();
@@ -791,11 +793,12 @@ function mouseClicked() {
       currentScene = 13;
       mainMusic.stop();
       buttonSound.play();
-      playMusic.play();
+      playMusic.loop();
     } else if (buttonEndlessMode.isMouseInside()) {
       currentScene = 23;
       mainMusic.stop();
       buttonSound.play();
+      playMusic.loop();
     } else if (howtoplay.isMouseInside()) {
       currentScene = 33;
       buttonSound.play();
@@ -812,7 +815,7 @@ function mouseClicked() {
       charmanderScore = 0;
       snivyScore = 0;
       buttonSound.play();
-      mainMusic.play();
+      mainMusic.loop();
     }
   }
   // Win Scene
@@ -823,7 +826,7 @@ function mouseClicked() {
       }
       currentScene -= 99;
       buttonSound.play();
-      mainMusic.play();
+      mainMusic.loop();
     }
   }
   // How To Play
