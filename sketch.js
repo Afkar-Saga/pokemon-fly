@@ -546,7 +546,6 @@ function drawMudkipPlay() {
   }
   for (let i = 0; i < leaves.length; i++) {
     leaves[i].draw();
-    leaves[i + 2].draw();
     playMudkip.checkForLeafHit(leaves[i]);
     leaves[i].x -= leafSpeed; // Leaf Speed
     leafSpeed += 0.00001;
@@ -576,7 +575,6 @@ function drawCharmanderPlay() {
   }
   for (let i = 0; i < waters.length; i++) {
     waters[i].draw();
-    water[i + 2].draw();
     playCharmander.checkForWaterHit(waters[i]);
     waters[i].x -= waterSpeed; // Water Speed
     waterSpeed += 0.00001;
@@ -606,7 +604,6 @@ function drawSnivyPlay() {
   }
   for (let i = 0; i < fires.length; i++) {
     fires[i].draw();
-    fires[i + 2].draw();
     playSnivy.checkForFireHit(fires[i]);
     fires[i].x -= fireSpeed; // Fire Speed
     fireSpeed += 0.00001;
