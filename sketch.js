@@ -129,7 +129,7 @@ class Mudkip {
 
   draw() {
     rectMode(CORNER);
-    this.y = constrain(this.y, 40, height - 50);
+    this.y = constrain(this.y, 100, height - 50);
     // Body
     fill(0, 30, 255);
     rect(this.x, this.y, this.pixel * 9, this.pixel * 2);
@@ -202,7 +202,7 @@ class Charmander {
 
   draw() {
     rectMode(CORNER);
-    this.y = constrain(this.y, 40, height - 50);
+    this.y = constrain(this.y, 100, height - 50);
     // Body
     fill(241, 115, 5);
     rect(this.x, this.y, this.pixel * 4, this.pixel * 3);
@@ -277,7 +277,7 @@ class Snivy {
 
   draw() {
     rectMode(CORNER);
-    this.y = constrain(this.y, 40, height - 50);
+    this.y = constrain(this.y, 100, height - 50);
     // Body
     fill(80, 221, 70);
     rect(this.x - this.pixel, this.y, this.pixel * 4, this.pixel * 3);
@@ -537,7 +537,7 @@ function drawMudkipPlay() {
   for (let i = 0; i < leaves.length; i++) {
     leaves[i].draw();
     playMudkip.checkForLeafHit(leaves[i]);
-    leaves[i].x -= 5; // Leaf Speed
+    leaves[i].x -= 7; // Leaf Speed
   }
   for (let i = 0; i < grassXs.length; i++) {
     grassXs[i].draw();
@@ -565,7 +565,7 @@ function drawCharmanderPlay() {
   for (let i = 0; i < waters.length; i++) {
     waters[i].draw();
     playCharmander.checkForWaterHit(waters[i]);
-    waters[i].x -= 7; // Water Speed
+    waters[i].x -= 8; // Water Speed
   }
   for (let i = 0; i < seaXs.length; i++) {
     seaXs[i].draw();
@@ -593,7 +593,7 @@ function drawSnivyPlay() {
   for (let i = 0; i < fires.length; i++) {
     fires[i].draw();
     playSnivy.checkForFireHit(fires[i]);
-    fires[i].x -= 6; // Fire Speed
+    fires[i].x -= 9; // Fire Speed
   }
   for (let i = 0; i < lavaXs.length; i++) {
     lavaXs[i].draw();
