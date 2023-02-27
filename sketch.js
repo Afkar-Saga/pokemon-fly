@@ -39,7 +39,7 @@ function preload() {
 function setup() {
   noStroke();
   textAlign(CENTER);
-  
+
   createCanvas(window.innerWidth, window.innerHeight);
 
   bigCloud = new Cloud(200, height * 0.13, 95);
@@ -519,11 +519,7 @@ function drawHowToPlay() {
   textSize(50);
   text("How To Play", width / 2, 100);
   textSize(20);
-  text(
-    "Your Pokemon can use HM02, FLY!\n\nTo fly, hold the SPACE button!\n\nYour goal is to dodge all the obstacles\n\nThe obstacles have a type advantage against your Pokemon\n\nIf you got hit by the obstacles 10 times, YOU LOSE!\n\nBut if you can dodge 100 of the obstacles, YOU WIN!!!",
-    width / 2,
-    height / 3.5
-  );
+  text("Your Pokemon can use HM02, FLY!\n\nTo fly, hold the SPACE button!\n\nYour goal is to dodge all the obstacles\n\nThe obstacles have a type advantage against your Pokemon\n\nIf you got hit by the obstacles 10 times, YOU LOSE!\n\nBut if you can dodge 100 of the obstacles, YOU WIN!!!", width / 2, height / 3.5);
   back.draw();
 }
 function drawLevel() {
@@ -550,9 +546,10 @@ function drawMudkipPlay() {
   }
   for (let i = 0; i < leaves.length; i++) {
     leaves[i].draw();
+    leaves[i + 2].draw();
     playMudkip.checkForLeafHit(leaves[i]);
     leaves[i].x -= leafSpeed; // Leaf Speed
-    leafSpeed += 0.001;
+    leafSpeed += 0.00001;
   }
   for (let i = 0; i < grassXs.length; i++) {
     grassXs[i].draw();
@@ -579,9 +576,10 @@ function drawCharmanderPlay() {
   }
   for (let i = 0; i < waters.length; i++) {
     waters[i].draw();
+    water[i + 2].draw();
     playCharmander.checkForWaterHit(waters[i]);
     waters[i].x -= waterSpeed; // Water Speed
-    waterSpeed += 0.001;
+    waterSpeed += 0.00001;
   }
   for (let i = 0; i < seaXs.length; i++) {
     seaXs[i].draw();
@@ -608,9 +606,10 @@ function drawSnivyPlay() {
   }
   for (let i = 0; i < fires.length; i++) {
     fires[i].draw();
+    fires[i + 2].draw();
     playSnivy.checkForFireHit(fires[i]);
     fires[i].x -= fireSpeed; // Fire Speed
-    fireSpeed += 0.001;
+    fireSpeed += 0.00001;
   }
   for (let i = 0; i < lavaXs.length; i++) {
     lavaXs[i].draw();
