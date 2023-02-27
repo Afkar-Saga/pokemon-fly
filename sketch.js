@@ -178,7 +178,7 @@ class Mudkip {
 
   fall() {
     this.y += this.fallSpeed;
-    this.fallSpeed += 0.5;
+    this.fallSpeed += 0.3;
   }
 
   checkForLeafHit(leaf) {
@@ -256,7 +256,7 @@ class Charmander {
 
   fall() {
     this.y += this.fallSpeed;
-    this.fallSpeed += 0.6;
+    this.fallSpeed += 0.4;
   }
 
   checkForWaterHit(water) {
@@ -339,7 +339,7 @@ class Snivy {
 
   fall() {
     this.y += this.fallSpeed;
-    this.fallSpeed += 0.3;
+    this.fallSpeed += 0.1;
   }
 
   checkForFireHit(fire) {
@@ -548,7 +548,7 @@ function drawMudkipPlay() {
     leaves[i].draw();
     playMudkip.checkForLeafHit(leaves[i]);
     leaves[i].x -= leafSpeed; // Leaf Speed
-    leafSpeed += 0.00001;
+    leafSpeed += 0.0001;
   }
   for (let i = 0; i < grassXs.length; i++) {
     grassXs[i].draw();
@@ -561,7 +561,7 @@ function drawMudkipPlay() {
   fill(0, 0, 0);
   textAlign(LEFT);
   textSize(35);
-  text("Hit: " + mudkipHit + "/10", 30, 30);
+  text("Hit: " + mudkipHit + "/10", 30, 50);
   text("Score: " + mudkipScore, 30, 100);
   playMudkip.draw();
 }
@@ -577,7 +577,7 @@ function drawCharmanderPlay() {
     waters[i].draw();
     playCharmander.checkForWaterHit(waters[i]);
     waters[i].x -= waterSpeed; // Water Speed
-    waterSpeed += 0.00001;
+    waterSpeed += 0.0001;
   }
   for (let i = 0; i < seaXs.length; i++) {
     seaXs[i].draw();
@@ -590,7 +590,7 @@ function drawCharmanderPlay() {
   fill(255, 255, 255);
   textAlign(LEFT);
   textSize(35);
-  text("Hit: " + charmanderHit + "/10", 30, 30);
+  text("Hit: " + charmanderHit + "/10", 30, 50);
   text("Score: " + charmanderScore, 30, 100);
   playCharmander.draw();
 }
@@ -606,7 +606,7 @@ function drawSnivyPlay() {
     fires[i].draw();
     playSnivy.checkForFireHit(fires[i]);
     fires[i].x -= fireSpeed; // Fire Speed
-    fireSpeed += 0.00001;
+    fireSpeed += 0.0001;
   }
   for (let i = 0; i < lavaXs.length; i++) {
     lavaXs[i].draw();
@@ -619,7 +619,7 @@ function drawSnivyPlay() {
   fill(0, 0, 0);
   textAlign(LEFT);
   textSize(35);
-  text("Hit: " + snivyHit + "/10", 30, 30);
+  text("Hit: " + snivyHit + "/10", 30, 50);
   text("Score: " + snivyScore, 30, 100);
   playSnivy.draw();
 }
@@ -652,14 +652,17 @@ var resetGame = function () {
   // Reset Mudkip
   mudkipHit = 0;
   playMudkip.y = 100;
+  playMudkip.fallSpeed = 4;
 
   // Reset Charmander
   charmanderHit = 0;
   playCharmander.y = 100;
+  playCharmander.fallSpeed = 8;
 
   // Reset Snivy
   snivyHit = 0;
   playSnivy.y = 100;
+  playSnivy.fallSpeed = 10;
 
   // Reset Obstacles
   leafSpeed = 6;
