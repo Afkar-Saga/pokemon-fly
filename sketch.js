@@ -539,7 +539,7 @@ function drawLevel() {
 function drawMudkipPlay() {
   background(0, 230, 255);
   drawCloud();
-  if (keyIsPressed && keyCode === 32) {
+  if (keyIsPressed && (keyCode === 32 || keyCode === 38)) {
     playMudkip.fly();
   } else {
     playMudkip.fall();
@@ -548,7 +548,7 @@ function drawMudkipPlay() {
     leaves[i].draw();
     playMudkip.checkForLeafHit(leaves[i]);
     leaves[i].x -= leafSpeed; // Leaf Speed
-    leafSpeed += 0.0001;
+    leafSpeed += 0.00003;
   }
   for (let i = 0; i < grassXs.length; i++) {
     grassXs[i].draw();
@@ -568,7 +568,7 @@ function drawMudkipPlay() {
 function drawCharmanderPlay() {
   background(200, 20, 0);
   drawCloud();
-  if (keyIsPressed && keyCode === 32) {
+  if (keyIsPressed && (keyCode === 32 || keyCode === 38)) {
     playCharmander.fly();
   } else {
     playCharmander.fall();
@@ -577,7 +577,7 @@ function drawCharmanderPlay() {
     waters[i].draw();
     playCharmander.checkForWaterHit(waters[i]);
     waters[i].x -= waterSpeed; // Water Speed
-    waterSpeed += 0.0001;
+    waterSpeed += 0.00003;
   }
   for (let i = 0; i < seaXs.length; i++) {
     seaXs[i].draw();
@@ -597,7 +597,7 @@ function drawCharmanderPlay() {
 function drawSnivyPlay() {
   background(140, 255, 161);
   drawCloud();
-  if (keyIsPressed && keyCode === 32) {
+  if (keyIsPressed && (keyCode === 32 || keyCode === 38)) {
     playSnivy.fly();
   } else {
     playSnivy.fall();
@@ -606,7 +606,7 @@ function drawSnivyPlay() {
     fires[i].draw();
     playSnivy.checkForFireHit(fires[i]);
     fires[i].x -= fireSpeed; // Fire Speed
-    fireSpeed += 0.0001;
+    fireSpeed += 0.00003;
   }
   for (let i = 0; i < lavaXs.length; i++) {
     lavaXs[i].draw();
