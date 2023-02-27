@@ -4,13 +4,14 @@ let menuSnivy, playSnivy, levelSnivy, buttonSnivy, snivyHit, snivyScore, snivyWi
 let start, howtoplay, level, back, nextLevel; // buttons
 let bigCloud, smallCloud; // clouds
 let leaf, grass, water, sea, fire, lava; // obstacles
-let mainMusic, playMusic, buttonSound, winSound, loseSound, leafHitSound, fallGrassSound, waterHitSound, fallSeaSound, fireHitSound, fallLavaSound; // sounds
+let leafSpeed, waterSpeed, fireSpeed; // obstacles speed
 let leaves = [];
 let grassXs = [];
 let waters = [];
 let seaXs = [];
 let fires = [];
 let lavaXs = [];
+let mainMusic, playMusic, buttonSound, winSound, loseSound, leafHitSound, fallGrassSound, waterHitSound, fallSeaSound, fireHitSound, fallLavaSound; // sounds
 let currentScene;
 let endlessMode;
 
@@ -77,6 +78,10 @@ function setup() {
   buttonSnivy = new Button(levelSnivy.x + 20, levelSnivy.y, width / 10, height / 6);
   buttonEndlessMode = new Button(width + 200, height * 0.95, width / 12, height / 12, 16, "Endless Mode"); // endless mode button
 
+  leafSpeed = 6;
+  waterSpeed = 9;
+  fireSpeed = 11;
+
   for (let i = 0; i < 100; i++) {
     leaves.push(new Leaf(i * 300 + 500, random(40, height - 150)));
     waters.push(new Water(i * 300 + 500, random(40, height - 150)));
@@ -124,12 +129,13 @@ class Mudkip {
     this.x = x;
     this.y = y;
     this.pixel = pixel;
-    this.leaves = 0;
+    this.flySpeed = 7;
+    this.fallSpeed = 4;
   }
 
   draw() {
     rectMode(CORNER);
-    this.y = constrain(this.y, 100, height - 50);
+    this.y = constrain(this.y, 120, height - 50);
     // Body
     fill(0, 30, 255);
     rect(this.x, this.y, this.pixel * 9, this.pixel * 2);
@@ -166,11 +172,13 @@ class Mudkip {
   }
 
   fly() {
-    this.y -= 7;
+    this.y -= this.flySpeed;
+    this.fallSpeed = 4;
   }
 
   fall() {
-    this.y += 4;
+    this.y += this.fallSpeed;
+    this.fallSpeed += 0.5;
   }
 
   checkForLeafHit(leaf) {
@@ -197,12 +205,13 @@ class Charmander {
     this.x = x;
     this.y = y;
     this.pixel = pixel;
-    this.water = 0;
+    this.flySpeed = 12;
+    this.fallSpeed = 8;
   }
 
   draw() {
     rectMode(CORNER);
-    this.y = constrain(this.y, 100, height - 50);
+    this.y = constrain(this.y, 120, height - 50);
     // Body
     fill(241, 115, 5);
     rect(this.x, this.y, this.pixel * 4, this.pixel * 3);
@@ -241,11 +250,13 @@ class Charmander {
   }
 
   fly() {
-    this.y -= 12;
+    this.y -= this.flySpeed;
+    this.fallSpeed = 8;
   }
 
   fall() {
-    this.y += 8;
+    this.y += this.fallSpeed;
+    this.fallSpeed += 0.6;
   }
 
   checkForWaterHit(water) {
@@ -272,12 +283,13 @@ class Snivy {
     this.x = x;
     this.y = y;
     this.pixel = pixel;
-    this.fire = 0;
+    this.flySpeed = 5;
+    this.fallSpeed = 10;
   }
 
   draw() {
     rectMode(CORNER);
-    this.y = constrain(this.y, 100, height - 50);
+    this.y = constrain(this.y, 120, height - 50);
     // Body
     fill(80, 221, 70);
     rect(this.x - this.pixel, this.y, this.pixel * 4, this.pixel * 3);
@@ -321,11 +333,13 @@ class Snivy {
   }
 
   fly() {
-    this.y -= 5;
+    this.y -= this.flySpeed;
+    this.fallSpeed = 10;
   }
 
   fall() {
-    this.y += 10;
+    this.y += this.fallSpeed;
+    this.fallSpeed += 0.3;
   }
 
   checkForFireHit(fire) {
@@ -537,7 +551,8 @@ function drawMudkipPlay() {
   for (let i = 0; i < leaves.length; i++) {
     leaves[i].draw();
     playMudkip.checkForLeafHit(leaves[i]);
-    leaves[i].x -= 7; // Leaf Speed
+    leaves[i].x -= leafSpeed; // Leaf Speed
+    leafSpeed += 0.001;
   }
   for (let i = 0; i < grassXs.length; i++) {
     grassXs[i].draw();
@@ -550,7 +565,7 @@ function drawMudkipPlay() {
   fill(0, 0, 0);
   textAlign(LEFT);
   textSize(35);
-  text("Hit: " + mudkipHit, 30, 30);
+  text("Hit: " + mudkipHit + "/10", 30, 30);
   text("Score: " + mudkipScore, 30, 100);
   playMudkip.draw();
 }
@@ -565,7 +580,8 @@ function drawCharmanderPlay() {
   for (let i = 0; i < waters.length; i++) {
     waters[i].draw();
     playCharmander.checkForWaterHit(waters[i]);
-    waters[i].x -= 8; // Water Speed
+    waters[i].x -= waterSpeed; // Water Speed
+    waterSpeed += 0.001;
   }
   for (let i = 0; i < seaXs.length; i++) {
     seaXs[i].draw();
@@ -578,7 +594,7 @@ function drawCharmanderPlay() {
   fill(255, 255, 255);
   textAlign(LEFT);
   textSize(35);
-  text("Hit: " + charmanderHit, 30, 30);
+  text("Hit: " + charmanderHit + "/10", 30, 30);
   text("Score: " + charmanderScore, 30, 100);
   playCharmander.draw();
 }
@@ -593,7 +609,8 @@ function drawSnivyPlay() {
   for (let i = 0; i < fires.length; i++) {
     fires[i].draw();
     playSnivy.checkForFireHit(fires[i]);
-    fires[i].x -= 9; // Fire Speed
+    fires[i].x -= fireSpeed; // Fire Speed
+    fireSpeed += 0.001;
   }
   for (let i = 0; i < lavaXs.length; i++) {
     lavaXs[i].draw();
@@ -606,7 +623,7 @@ function drawSnivyPlay() {
   fill(0, 0, 0);
   textAlign(LEFT);
   textSize(35);
-  text("Hit: " + snivyHit, 30, 30);
+  text("Hit: " + snivyHit + "/10", 30, 30);
   text("Score: " + snivyScore, 30, 100);
   playSnivy.draw();
 }
@@ -649,6 +666,9 @@ var resetGame = function () {
   playSnivy.y = 100;
 
   // Reset Obstacles
+  leafSpeed = 6;
+  waterSpeed = 9;
+  fireSpeed = 11;
   leaves = [];
   waters = [];
   fires = [];
